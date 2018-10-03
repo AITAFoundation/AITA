@@ -2,3 +2,6 @@
 
 # mac system
 .DS_Store
+
+# idea
+.idea/
