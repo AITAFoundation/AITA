@@ -1,4 +1,5 @@
 package ed25519
+
 // Copyright 2016 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
@@ -11,18 +12,15 @@ package ed25519
 // This code is a port of the public domain, “ref10” implementation of ed25519
 // from SUPERCOP.
 import (
+	"AITA/encrypt/ed25519/edwards25519"
 	"crypto"
-	"io"
-	"errors"
+	cryptorand "crypto/rand"
 	"crypto/sha512"
-	cryptorand"crypto/rand"
-	"RC/ed25519/edwards25519"
-	"strconv"
 	"crypto/subtle"
+	"errors"
+	"io"
+	"strconv"
 )
-
-
-
 
 const (
 	// PublicKeySize is the size, in bytes, of public keys as used in this package.
@@ -46,7 +44,6 @@ func (priv PrivateKey) Public() crypto.PublicKey {
 	return PublicKey(publicKey)
 }
 
-
 // Sign signs the given message with priv.
 // Ed25519 performs two passes over messages to be signed and therefore cannot
 // handle pre-hashed messages. Thus opts.HashFunc() must return zero to
@@ -59,7 +56,6 @@ func (priv PrivateKey) Sign(rand io.Reader, message []byte, opts crypto.SignerOp
 
 	return Sign(priv, message), nil
 }
-
 
 // GenerateKey generates a public/private key pair using entropy from rand.
 // If rand is nil, crypto/rand.Reader will be used.
@@ -92,7 +88,6 @@ func GenerateKey(rand io.Reader) (publicKey PublicKey, privateKey PrivateKey, er
 
 	return publicKey, privateKey, nil
 }
-
 
 // Sign signs the message with privateKey and returns a signature. It will
 // panic if len(privateKey) is not PrivateKeySize.
@@ -142,7 +137,6 @@ func Sign(privateKey PrivateKey, message []byte) []byte {
 
 	return signature
 }
-
 
 // Verify reports whether sig is a valid signature of message by publicKey. It
 // will panic if len(publicKey) is not PublicKeySize.

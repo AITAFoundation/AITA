@@ -8,9 +8,9 @@ import (
 
 	"math/big"
 
-	"RC/base58"
-	"RC/cryptonew"
-	"RC/ed25519"
+	"AITA/encrypt/base58"
+	"AITA/encrypt/cryptonew"
+	"AITA/encrypt/ed25519"
 )
 
 //RcAcc the wallet of a user1
